@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scoreit</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+    <%= link_to 'Log-in?', new_user_session_path %>
+    <%= link_to 'new_startup_path', new_startup_path %>
+
+    <%= yield %>
+
+
+
+  </body>
+</html>

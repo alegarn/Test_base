@@ -1,0 +1,18 @@
+<%= form_with(url: score_category_finance_answer_finances_path(current_user.startup.scores[0].id, current_user.startup.scores[0].category_finance.id), method: "post") do |form|%>
+
+<p>Question 1</p>
+<%= form.radio_button :answer_1, 2, :checked => true %>
+<%= form.label :answer_1, "Pas le choix." %>
+
+<p> Question 2</p>
+<%= form.radio_button :answer_2, 1, :checked => true %>
+<%= form.label :answer_2, "Réponse 1" %>
+
+<%= form.radio_button :answer_2, 2 %>
+<%= form.label :answer_2, "Réponse 2" %>
+
+
+  <%= form.submit "Go" %>
+
+<% end %>
+<a href="<%= root_path %>" class="btn btn-primary m-3 rounded-pill mt-4">👈 Revenir au menu</a>
