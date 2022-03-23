@@ -8,12 +8,13 @@ class ScoresController < ApplicationController
 
   def create
     @score = Score.new(
-      'name' => params[:name],
-      'description' => params[:description]
+      'startup_id' => current_user.startup.id
     )
     if @score.save
+
       redirect_to root_path
     else
+      flash[:score_delay] = "Problème"
       render 'new'
     end
   end

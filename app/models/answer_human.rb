@@ -1,6 +1,7 @@
 class AnswerHuman < ApplicationRecord
   belongs_to :category_human , optional: true
 
+validates :category_humen_id, uniqueness: true
 
   after_create :scoring
 

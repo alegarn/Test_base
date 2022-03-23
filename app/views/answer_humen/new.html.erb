@@ -1,4 +1,4 @@
-<%= form_with(url: score_category_human_answer_humen_path(current_user.startup.scores[0].id, current_user.startup.scores[0].category_human.id), method: "post") do |form|%>
+<%= form_with(url: score_category_human_answer_humen_path(current_user.startup.scores.last.id, current_user.startup.scores.last.category_human.id), method: "post") do |form|%>
 
 <p>Question 1</p>
 <%= form.radio_button :answer_1, 2, :checked => true %>
@@ -12,11 +12,11 @@
 <%= form.label :answer_2, "Réponse 2" %>
 
 <!-- il y a dans la table AnswerHumann une colonne category_humen_id -->
-<%= form.hidden_field :category_humen_id, value: current_user.id %>
-<%= form.hidden_field :current_user, value: current_user %>
+<%= form.hidden_field :category_humen_id, value: current_user.startup.scores.last.id %>
 
 
   <%= form.submit "Go" %>
 
 <% end %>
-<a href="<%= root_path %>" class="btn btn-primary m-3 rounded-pill mt-4">👈 Revenir au menu</a>
+<p><a href="<%= root_path %>" class="btn btn-primary m-3 rounded-pill mt-4">👈 Revenir au menu</a>
+</p>

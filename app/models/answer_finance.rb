@@ -1,6 +1,9 @@
 class AnswerFinance < ApplicationRecord
   belongs_to :category_finance #, optional: true
 
+  validates :category_finance_id, uniqueness: true
+
+
   after_create :scoring
 
   def scoring

@@ -1,3 +1,9 @@
+<% if @startup.errors.any? %>
+<% @startup.errors.full_messages.each do |message| %>
+<%= message %>
+<%end%>
+<%end%>
+
 <%= form_tag startups_path, method: "post" do %>
   <div class="container contact " style="height:80vh">
     <div class="row">
@@ -68,9 +74,12 @@
     </div>
     <a href="<%= root_path %>" class="btn btn-primary m-3 rounded-pill mt-4">👈 Revenir au menu</a>
   </div>
+
+<%= link_to 'new score', new_score_path %>
+
 <%  if !current_user.startup.nil? %>
-<%= link_to 'form', new_score_category_human_answer_human_path( current_user.startup.scores[0].id, current_user.startup.scores[0].category_human.id) %>
-<%= link_to 'form', new_score_category_finance_answer_finance_path( current_user.startup.scores[0].id, current_user.startup.scores[0].category_finance.id) %>
+<%= link_to 'form', new_score_category_human_answer_human_path( current_user.startup.scores.last.id, current_user.startup.scores.last.category_human.id) %>
+<%= link_to 'form', new_score_category_finance_answer_finance_path( current_user.startup.scores.last.id, current_user.startup.scores.last.category_finance.id) %>
 
 <%  end %>
 

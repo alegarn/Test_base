@@ -15,7 +15,7 @@ class StartupsController < ApplicationController
     if @startup.save
       redirect_to root_path
     else
-      
+      flash[:notice] = "Ouiiinnnnnnnnn"
       render 'new'
     end
   end
