@@ -7,39 +7,15 @@ class Score < ApplicationRecord
   has_one :category_finance, dependent: :destroy
   has_one :answer_finance, through: :category_finance
 
-
-  #validate :is_score?, on: :create
-  #validate :update_score, on: :update
   validate :score_exist?, on: :create
   validate :delay_score, on: :create
+
 
 
 
   after_create :create_category_human
   after_create :create_category_finance
 
-  #  def is_score?
-
-  #  puts '100'*100
-  #  end
-
-  #  def update_score
-  #    puts '100'*100
-
-
-  #    if !Score.where(startup_id: self.startup_id).last.name.nil?
-  #      puts Score.where(startup_id: self.startup_id).last.name.nil?
-  #    puts "ça va?"
-  #    errors.add(:update_score, "Error, you cannot update an existing notation.")
-  #      return false
-  #    else
-  #      puts !Score.where(startup_id: self.startup_id).last.name.nil?
-
-  #      return true
-  #    end
-  #  end
-
-  #pas de startup, donc pas de sc.re
 
 
   #si la ligne existe et vide, pas de nouveau score
@@ -49,7 +25,7 @@ class Score < ApplicationRecord
     @score_exist = Score.where(startup_id: self.startup_id).last
 
     if !@score_exist.nil? && @score_exist.name.nil?
-      errors.add(:score_delay, "Error, not empty.")
+      errors.add(:score_exist?, "Error, not empty.")
       return false
     end
 

@@ -7,11 +7,11 @@ class ScoresController < ApplicationController
   end
 
   def create
+    
     @score = Score.new(
       'startup_id' => current_user.startup.id
     )
     if @score.save
-
       redirect_to root_path
     else
       flash[:score_delay] = "Problème"
