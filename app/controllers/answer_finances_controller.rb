@@ -1,18 +1,14 @@
 class AnswerFinancesController < ApplicationController
-  def index
-  end
+  #les routes
 
   def new
+    puts "là"*80
     @answer_finance = AnswerFinance.new
   end
 
   def create
-    @answer_finance = AnswerFinance.new(
-      'answer_1' => params[:answer_1],
-      'answer_2' => params[:answer_2],
-      'category_finance_id' => params[:category_finance_id]
-    )
-
+    puts "ici"*200
+    @answer_finance = AnswerFinance.new(answer_finance_params)
     if  @answer_finance.save
       redirect_to root_path
     else
@@ -22,6 +18,12 @@ class AnswerFinancesController < ApplicationController
 
   end
 
-  def update
+  private
+
+
+
+  def answer_finance_params
+    params.permit(:answer_1, :answer_2, :category_finance_id)
   end
+  #les routes
 end
